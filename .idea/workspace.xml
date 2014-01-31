@@ -41,10 +41,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="60" selection-start="740" selection-end="740" vertical-scroll-proportion="0.5518395" vertical-offset="135" max-vertical-offset="615">
+            <state line="20" column="60" selection-start="740" selection-end="740" vertical-scroll-proportion="-6.875" vertical-offset="135" max-vertical-offset="615">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/statuses/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="10" selection-start="333" selection-end="333" vertical-scroll-proportion="0.057251908" vertical-offset="135" max-vertical-offset="465">
               <folding />
             </state>
           </provider>
@@ -76,8 +85,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="439" />
-    <option name="y" value="399" />
+    <option name="x" value="315" />
+    <option name="y" value="101" />
     <option name="width" value="1045" />
     <option name="height" value="571" />
   </component>
@@ -143,10 +152,6 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -166,7 +171,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
+              <option name="myItemId" value="statuses" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -425,8 +430,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="439" y="399" width="1045" height="571" extended-state="0" />
-    <editor active="false" />
+    <frame x="315" y="101" width="1045" height="571" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295238" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -489,7 +494,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="60" selection-start="740" selection-end="740" vertical-scroll-proportion="0.5518395" vertical-offset="135" max-vertical-offset="615">
+        <state line="20" column="60" selection-start="740" selection-end="740" vertical-scroll-proportion="-6.875" vertical-offset="135" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/statuses/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="10" selection-start="333" selection-end="333" vertical-scroll-proportion="0.057251908" vertical-offset="135" max-vertical-offset="465">
           <folding />
         </state>
       </provider>
