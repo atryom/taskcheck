@@ -1,4 +1,14 @@
 Taskcheck::Application.routes.draw do
+  resources :notes
+
+  resources :comments
+
+  resources :tasks
+
+  resources :groups
+
+  resources :user_statuses
+
   resources :statuses
 
   devise_for :users

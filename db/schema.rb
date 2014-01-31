@@ -11,11 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131184902) do
+ActiveRecord::Schema.define(version: 20140131224354) do
+
+  create_table "comments", force: true do |t|
+    t.text     "comment"
+    t.integer  "task_is"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.text     "note"
+    t.integer  "task_is"
+    t.integer  "user_id"
+    t.boolean  "shared"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "statuses", force: true do |t|
     t.string   "name"
     t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "name"
+    t.text     "note"
+    t.integer  "status_id"
+    t.integer  "group_id"
+    t.integer  "duration"
+    t.date     "deadline"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_statuses", force: true do |t|
+    t.string   "name"
+    t.integer  "order_num"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

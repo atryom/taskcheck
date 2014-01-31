@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note: MyText
+  task_is: 1
+  user_id: 1
+  shared: false
+
+two:
+  note: MyText
+  task_is: 1
+  user_id: 1
+  shared: false
