@@ -1,21 +1,25 @@
-<h2>Sign up</h2>
+<%= render layout: "welcome" do %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "bs-example form-horizontal"}) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label "Имя" %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
-
-  <div><%= f.label "Email" %><br />
+  <legend>Зарегистрироваться</legend>
+  <div>
+    <%= f.label "Имя"%>
+    <%= f.text_field :username, :autofocus => true, class: "form-control" %>
+  </div>
+  <br/>
+  <div><%= f.label "Email" %>
   <%= f.email_field :email%></div>
-
-  <div><%= f.label "Пароль" %><br />
+  <br />
+  <div><%= f.label "Пароль" %>
   <%= f.password_field :password %></div>
-
-  <div><%= f.label "Подтверждение пароля" %><br />
+  <br />
+  <div><%= f.label "Подтверждение пароля" %>
   <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <br/>
+  <div><%= f.submit "Зарегистрироваться", class: "btn btn-success", style: "width:100%" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<% end %>

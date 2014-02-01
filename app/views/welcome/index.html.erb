@@ -1,0 +1,11 @@
+<%= render layout: "welcome" do %>
+          <h4 align = "center">
+            <%= link_to 'Войти', user_session_path, class: "btn btn-info", style: "width:100%"%>
+                <br><br>
+            ИЛИ
+                <br><br>
+            <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "btn btn-success", style: "width:100%"%>
+          </h4>
+<% end %>
+
+

@@ -1,4 +1,5 @@
 Taskcheck::Application.routes.draw do
+  get "welcome/index"
   resources :notes
 
   resources :comments
@@ -13,7 +14,8 @@ Taskcheck::Application.routes.draw do
 
   devise_for :users
   resources :users
-  root :to => 'users#index'
+  root :to => 'welcome#index'
+  devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
