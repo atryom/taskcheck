@@ -1,13 +1,6 @@
 <%- model_class = User -%>
 <div class="page-header">
   <h1>Список пользователей</h1>
-  <% if user_signed_in? %>
-    <h2><%= current_user[:username] %> <%= link_to "Выход", destroy_user_session_path, :method =>:delete, :class => 'btn btn-mini btn-danger' %></h2>
-  <% else %>
-      <%= link_to 'Зарегистрироваться', new_user_registration_path, :class =>'btn btn-mini btn-success' %> или
-      <%= link_to 'Войти', new_user_session_path, :class=>'btn btn-mini btn-primary' %>
-  <% end %>
-
 </div>
 <table class="table table-striped">
   <thead>
@@ -37,6 +30,7 @@
     <% end %>
   </tbody>
 </table>
+<i class="glyphicon glyphicon-pencil"></i>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_user_path,

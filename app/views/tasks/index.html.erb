@@ -1,20 +1,20 @@
-<h1>Listing tasks</h1>
-
-<table>
+<div class="page-header">
+<h1>Список задач</h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Note</th>
-      <th>Status</th>
-      <th>Group</th>
-      <th>Duration</th>
-      <th>Deadline</th>
+      <th>Наименование</th>
+      <th>Описание</th>
+      <th>Статус</th>
+      <th>Группа</th>
+      <th>Время выполнения</th>
+      <th>Срок</th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
@@ -24,7 +24,7 @@
         <td><%= task.group_id %></td>
         <td><%= task.duration %></td>
         <td><%= task.deadline %></td>
-        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Show', task, class: "btn btn-mini"%></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -33,5 +33,4 @@
 </table>
 
 <br>
-
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'Новая задача', new_task_path, class: "btn btn-primary"%>

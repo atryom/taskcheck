@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Taskcheck</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -15,11 +16,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Some Store</a>
+      <a class="brand" href="#"><span style="color: green" class="fa fa-check-square-o fa-1g"></span> TaskCheck</a>
+
       <div class="nav-collapse">
         <ul class="nav">
           <li><%= link_to "Список пользователей", users_path %></li>
           <li><%= link_to "Contact Us" %></li>
+          <li>
+            <% if user_signed_in? %>
+                <%= link_to current_user[:username] + " выход", destroy_user_session_path, :method =>:delete%>
+            <% else %>
+                <%= link_to 'Зарегистрироваться', new_user_registration_path%>
+                </li>
+                <li><%= link_to 'Войти', new_user_session_path %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
