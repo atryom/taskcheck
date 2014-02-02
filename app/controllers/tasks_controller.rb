@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.where("group_id=?",params[:group_id])
   end
 
   # GET /tasks/1
@@ -15,6 +15,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    @group = Group.where("id=?",params[:group_id])
+    @title = 'Добавить новую задачу в группу '+ @group.first[:name]
     @task = Task.new
   end
 
@@ -25,11 +27,12 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-
+    @group_task_params = task_params
+    @group_task_params[:group_id] = params[:group_id]
+    @task = Task.new(@group_task_params)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to group_tasks_path(params[:group_id]), notice: 'Задача успешно создана.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
@@ -43,7 +46,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to group_tasks_path(params[:group_id]), notice: 'Задача успешно обновлена.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +60,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to group_tasks_path(params[:group_id]) }
       format.json { head :no_content }
     end
   end
@@ -70,6 +73,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :note, :status_id, :group_id, :duration, :deadline)
+      params.require(:task).permit(:name, :note, :status_id, :group_id, :duration, :deadline, :commit)
     end
 end

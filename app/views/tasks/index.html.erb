@@ -1,6 +1,4 @@
-<div class="page-header">
-<h1>Список задач</h1>
-</div>
+<legend>Список задач</legend>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -24,13 +22,13 @@
         <td><%= task.group_id %></td>
         <td><%= task.duration %></td>
         <td><%= task.deadline %></td>
-        <td><%= link_to 'Show', task, class: "btn btn-mini"%></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Открыть', group_tasks_path(params[:group_id]), class: "btn btn-mini"%></td>
+        <td><%= link_to 'Редактировать', edit_group_task_path(params[:group_id], task), class: "btn btn-mini btn-primary" %></td>
+        <td><%= link_to 'Удалить', group_task_path(params[:group_id], task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'Новая задача', new_task_path, class: "btn btn-primary"%>
+<%= link_to 'Новая задача', new_group_task_path, class: "btn btn-primary"%>

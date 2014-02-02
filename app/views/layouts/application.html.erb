@@ -20,18 +20,36 @@
       <a class="brand" href="/welcome/index"><span style="color: darkgreen" class="fa fa-check-square-o fa-1g"></span> TaskCheck</a>
 
       <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Список пользователей", users_path %></li>
-          <li><%= link_to "Contact Us" %></li>
-          <li>
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Группы <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><% @linker = '<i class="fa fa-plus"></i> Новая'.html_safe %>
+                    <%= link_to @linker, new_group_path %></li>
+                  <li class="divider"></li>
+                  <% if user_signed_in?
+                        @groups = Group.where("user_id = ?", current_user[:id])
+                        @groups.each do |group|
+                  %>
+                  <li><%= link_to group[:name], group_tasks_path(group[:id]) %></li>
+                  <%    end
+                     end %>
+                </ul>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "О проекте" %></li>
             <% if user_signed_in? %>
-                <%= link_to current_user[:username] + " выход", destroy_user_session_path, :method =>:delete%>
-            <% else %>
-                <%= link_to 'Зарегистрироваться', new_user_registration_path%>
-                </li>
-                <li><%= link_to 'Войти', new_user_session_path %>
+              <li>
+                <% @linker = '<i class="fa fa-user"></i><span style="color: green">'.html_safe+' '+ current_user[:username]+'</span>'.html_safe%>
+                <%= link_to @linker, edit_user_path(current_user[:id])%>
+              </li>
+              <li>
+                <%= link_to '<i class="fa fa-sign-out"></i>'.html_safe, destroy_user_session_path, :method =>:delete%>
+              </li>
             <% end %>
-          </li>
         </ul>
       </div>
     </div>

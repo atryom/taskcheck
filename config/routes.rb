@@ -1,19 +1,18 @@
 Taskcheck::Application.routes.draw do
   get "welcome/index"
-  resources :notes
 
-  resources :comments
-
-  resources :tasks
-
-  resources :groups
+  resources :groups do
+    resources :tasks do
+      resources :comments
+      resources :notes
+    end
+  end
 
   resources :user_statuses
-
   resources :statuses
-
   devise_for :users
   resources :users
+
   root :to => 'welcome#index'
   #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 
