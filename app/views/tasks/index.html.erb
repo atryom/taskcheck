@@ -1,34 +1,63 @@
-<legend>Список задач</legend>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Наименование</th>
-      <th>Описание</th>
-      <th>Статус</th>
-      <th>Группа</th>
-      <th>Время выполнения</th>
-      <th>Срок</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.note %></td>
-        <td><%= task.status_id %></td>
-        <td><%= task.group_id %></td>
-        <td><%= task.duration %></td>
-        <td><%= task.deadline %></td>
-        <td><%= link_to 'Открыть', group_tasks_path(params[:group_id]), class: "btn btn-mini"%></td>
-        <td><%= link_to 'Редактировать', edit_group_task_path(params[:group_id], task), class: "btn btn-mini btn-primary" %></td>
-        <td><%= link_to 'Удалить', group_task_path(params[:group_id], task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="span2">
+      <legend>Группы</legend>
+      <ul class="list-group" style="list-style: none; margin: 2px 0 0;">
+      <% @all_user_groups.each do |user_group| %>
+          <% @my_text_4_link = '<li class="list-group-item"><span class="badge">'.html_safe+
+                  Task.task_qty(user_group.id)+
+                  '</span>'.html_safe+
+                  user_group.name+
+                  '</li>'.html_safe %>
+          <%= link_to @my_text_4_link, group_tasks_path(user_group.id) %> </li>
+      <% end %>
+      </ul>
+      <br>
+      <%= link_to 'Новая группа', new_group_path, class: "btn btn-info"%>
+      <br/><br/>
+      <%= link_to 'Ред. группу '+ @group[:name], edit_group_path(params[:group_id]), class: "btn btn-info"%>
+    </div>
+    <div class="span7">
+        <legend>Список задач</legend>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Описание</th>
+                    <th>Статус</th>
+                    <th>Время выполнения</th>
+                    <th>Срок</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @tasks.each do |task| %>
+                    <tr>
+                        <td><%= task.name %></td>
+                        <td><%= task.note %></td>
+                        <td><%= Status.find(task.status_id).name  %></td>
+                        <td><%= task.duration %></td>
+                        <td><%= task.deadline.blank? ? "": task.deadline.strftime('%d.%m.%Y') %></td>
+                        <td><%= link_to 'Открыть', group_task_path(params[:group_id], task), class: "btn btn-mini"%></td>
+                        <td><%= link_to 'Редактировать', edit_group_task_path(params[:group_id], task), class: "btn btn-mini btn-info" %></td>
+                        <td><%= link_to 'Удалить', group_task_path(params[:group_id], task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <%= link_to 'Новая задача', new_group_task_path, class: "btn btn-info"%>
+    </div>
+    <div class="span2">
+        <legend>Статусы</legend>
+        <div class="list-group">
+            <% Status.all.each do |st|%>
+                <li class="list-group-item"><span class="badge">0</span><%= st.name %></li>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>
 
-<br>
-<%= link_to 'Новая задача', new_group_task_path, class: "btn btn-primary"%>
+

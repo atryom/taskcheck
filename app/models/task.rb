@@ -5,4 +5,10 @@ class Task < ActiveRecord::Base
   has_many :comments
   has_many :notes
 
+  def self.task_qty(group_id)
+    @lcl_tasks = Task.where("group_id=?", group_id)
+    @lcl_tasks.length.to_s
+
+  end
+
 end

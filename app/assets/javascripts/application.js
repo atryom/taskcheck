@@ -10,10 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-$('.datepicker').datepicker()
+//$('.datepicker').datepicker()
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-
+function set_date_fld()
+{
+    $('.date-fld').datepicker();
+}
+$(document).ready(set_date_fld);
+$(document).on('page:load', set_date_fld);

@@ -5,7 +5,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
+    @group = Group.where("id=?",params[:group_id]).first
     @tasks = Task.where("group_id=?",params[:group_id])
+    @all_user_groups = Group.where("user_id=?",current_user[:id])
   end
 
   # GET /tasks/1
@@ -16,12 +18,18 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @group = Group.where("id=?",params[:group_id])
+    @status_array = Status.all.map{|status| [status.name, status.id] }
     @title = 'Добавить новую задачу в группу '+ @group.first[:name]
+    @btn_lbl = 'Создать'
     @task = Task.new
   end
 
   # GET /tasks/1/edit
   def edit
+    @group = Group.where("id=?",params[:group_id])
+    @title = 'Редактировать задачу в группе '+ @group.first[:name]
+    @btn_lbl = 'Редактировать'
+    @status_array = Status.all.map{|status| [status.name, status.id] }
   end
 
   # POST /tasks
@@ -75,4 +83,6 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name, :note, :status_id, :group_id, :duration, :deadline, :commit)
     end
+
+
 end

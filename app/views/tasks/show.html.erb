@@ -30,5 +30,5 @@
   <%= @task.deadline %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_group_task_path(params[:group_id], @task) %> |
+<%= link_to 'Back', group_tasks_path(params[:group_id]) %>

@@ -1,6 +1,8 @@
-<h1>Editing task</h1>
+<%= form_for @task, as: :task, url:group_task_path(params[:group_id], @task), html: { class:"bs-example form-horizontal"} do |f|%>
 
-<%= render 'form' %>
+    <% @frm = f%>
+    <%= render partial:"form", locals: {title: @title, btn_lbl:@btn_lbl, frm:@frm} %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<% end %>
+
+<%= link_to 'К списку задач', group_tasks_path(params[:group_id]) %>
